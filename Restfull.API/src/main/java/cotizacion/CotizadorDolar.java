@@ -1,6 +1,6 @@
 package cotizacion;
 
-import Utils.Request;
+import utils.Request;
 
 public class CotizadorDolar implements Cotizador
 {
