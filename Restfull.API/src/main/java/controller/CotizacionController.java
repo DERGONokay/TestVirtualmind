@@ -20,10 +20,10 @@ public class CotizacionController
 	 * @param MONEDA 
 	 * @return Cotizacion de la MONEDA en Pesos
 	 */
-	@RequestMapping(value="/MONEDA", method=RequestMethod.GET)
+	@RequestMapping(value="/MONEDA/quote", method=RequestMethod.GET)
 	public double cotizar(@PathVariable String MONEDA)
 	{
-		System.out.println("Cotizando el "+MONEDA);
+		System.out.println("Cotizando: "+MONEDA);
 		if(MONEDA.equals("Dolar"))
 		{
 			cotizador = new CotizadorDolar();
@@ -38,5 +38,11 @@ public class CotizacionController
 		}
 		
 		return cotizador.cotizar();
+	}
+	
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public String test()
+	{
+		return "TEST";
 	}
 }
