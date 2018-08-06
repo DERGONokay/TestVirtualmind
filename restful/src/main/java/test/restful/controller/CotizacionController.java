@@ -1,4 +1,4 @@
-package controller;
+package test.restful.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +20,9 @@ public class CotizacionController
 	 * @param MONEDA 
 	 * @return Cotizacion de la MONEDA en Pesos
 	 */
-	@RequestMapping(value="/MONEDA/quote", method=RequestMethod.GET)
+	@RequestMapping(value="/{MONEDA}/quote", method=RequestMethod.GET)
 	public double cotizar(@PathVariable String MONEDA)
 	{
-		System.out.println("Cotizando: "+MONEDA);
 		if(MONEDA.equals("Dolar"))
 		{
 			cotizador = new CotizadorDolar();

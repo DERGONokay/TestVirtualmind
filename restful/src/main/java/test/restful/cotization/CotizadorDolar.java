@@ -1,6 +1,6 @@
-package cotizacion;
+package test.restful.cotization;
 
-import utils.Request;
+import test.restful.util.Request;
 
 public class CotizadorDolar implements Cotizador
 {

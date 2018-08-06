@@ -1,4 +1,4 @@
-package cotizacion;
+package test.restful.cotization;
 
 public interface Cotizador 
 {

@@ -1,6 +1,6 @@
-package cotizacion;
+package test.restful.cotization;
 
-public class CotizadorPeso implements Cotizador
+public class CotizadorReal implements Cotizador
 {
 	public double cotizar() 
 	{
