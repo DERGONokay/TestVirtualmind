@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import test.restful.cotization.Cotizador;
-import test.restful.cotization.CotizadorDolar;
-import test.restful.cotization.CotizadorPeso;
-import test.restful.cotization.CotizadorReal;
+import test.restful.cotizacion.Cotizador;
+import test.restful.cotizacion.CotizadorDolar;
+import test.restful.cotizacion.CotizadorPeso;
+import test.restful.cotizacion.CotizadorReal;
 
 @RestController
 public class CotizacionController 

@@ -1,4 +1,4 @@
-package test.restful.cotization;
+package test.restful.cotizacion;
 
 import test.restful.util.Request;
 

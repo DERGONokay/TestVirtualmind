@@ -1,4 +1,4 @@
-package test.restful.cotization;
+package test.restful.cotizacion;
 
 public class CotizadorReal implements Cotizador
 {
