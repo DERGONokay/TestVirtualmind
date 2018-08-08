@@ -1,21 +1,36 @@
-package test.restful.usuario;
+package test.restful.usuario.model;
 
-//id, nombre, apellido, email, password
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "User")
 public class Usuario
 {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
+	@Column(name = "nombre")
 	private String nombre;
+	
+	@Column(name = "apellido")
 	private String apellido;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "password")
 	private String password;
 	
 	/**
 	 * Constructor vacio para Hibernate
 	 */
-	public Usuario()
-	{
-		
-	}
+	public Usuario(){ }
 	public Usuario(int id, String nombre, String apellido, String email, String password)
 	{
 		this.id = id;
