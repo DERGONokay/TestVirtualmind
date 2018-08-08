@@ -1,29 +1,34 @@
 package test.restful.usuario.persistencia;
 
+import java.util.List;
+
 import test.restful.usuario.model.Usuario;
 
 public class UsuarioDAO extends JpaDAO <Usuario>
 {
-
-	public void crear(Usuario usuario) 
+	
+	public void create(Usuario usuario) 
 	{
-		create(usuario);
+		createEntity(usuario);
 	}
 	
-	public Usuario obtener(int id)
+	public Usuario retireve(int id)
 	{
 		
-		return retrieveById("Usuario",id);
+		return retrieveEntityById("Usuario",id);
+	}
+	public List<Usuario> retrieveAll()
+	{
+		return (List<Usuario>) retrieveAllEntities("Usuario");
 	}
 
-	public void actualizar(Usuario usuario) 
+	public void update(Usuario usuario) 
 	{
-		update(usuario);
+		updateEntity(usuario);
 	}
 
-	public void eliminar(Usuario usuario) 
+	public void delete(Usuario usuario) 
 	{
-		delete(usuario);
+		deleteEntity(usuario);
 	}
-	
 }

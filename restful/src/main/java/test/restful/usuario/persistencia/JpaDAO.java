@@ -1,5 +1,7 @@
 package test.restful.usuario.persistencia;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -11,16 +13,16 @@ public class JpaDAO <T>
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("TEST");
 	EntityManager manager = emf.createEntityManager();
 	
-	protected void create(T entity) 
+	protected void createEntity(T entity) 
 	{
 		manager.getTransaction().begin();
 		manager.persist(entity);
 		manager.getTransaction().commit();
 	}
 	@SuppressWarnings("unchecked")
-	protected T retrieveById(String table, Integer id)
+	protected T retrieveEntityById(String entityName, Integer id)
 	{
-		Query q = manager.createQuery("SELECT c FROM "+table+" c WHERE c.id = :id");
+		Query q = manager.createQuery("SELECT c FROM "+entityName+" c WHERE c.id = :id");
 		q.setParameter("id", id);
 		try 
 		{
@@ -29,13 +31,18 @@ public class JpaDAO <T>
 			return null;
 		}
 	}
-	protected void update(T entity) 
+	protected List<T> retrieveAllEntities(String entityName)
+	{
+		Query q = manager.createQuery("FROM "+entityName);
+		return (List<T>) q.getResultList();
+	}
+	protected void updateEntity(T entity) 
 	{		
 		manager.getTransaction().begin();
 		manager.merge(entity);
 		manager.getTransaction().commit();
 	}
-	protected void delete(T entity) 
+	protected void deleteEntity(T entity) 
 	{
 		manager.getTransaction().begin();
 		manager.remove(entity);
