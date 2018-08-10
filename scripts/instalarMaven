@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Instalando Maven..."
+sudo apt-get install maven
+echo "Maven instalado! Utilice el comando: mvn -version. Para verificar la version de Maven."

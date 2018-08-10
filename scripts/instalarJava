@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Instalando Java..."
+sudo apt-get install default-jdk
+echo "Java instalado! Utilice el comando: java -version. Para verificar su instalacion"

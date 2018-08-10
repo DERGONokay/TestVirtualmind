@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Instalando MySQL Server..."
+sudo apt-get update
+sudo apt-get install mysql-server
+echo "MySQL Server instalado!"
+echo "Instalando python3 MySQL module..."
+sudo apt-get install python3-pip python-dev libmysqlclient-dev
+
+
