@@ -51,7 +51,7 @@ public class ABMController
 	 * Elimina un usuario de la base de datos segun su id
 	 * @param id Id del usuario en la base de datos
 	 */
-	@RequestMapping(value = "/usuario/baja/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuario/baja/{id}", method = RequestMethod.DELETE)
 	public void baja(@PathVariable String id)
 	{
 		UsuarioDAO udao = new UsuarioDAO();
@@ -64,9 +64,10 @@ public class ABMController
 	 * @param id Id del usuario en la base de datos
 	 * @param body Los nuevos datos del usuario
 	 */
-	@RequestMapping(value = "/usuario/modificaion/{id}", method = RequestMethod.POST)
-	public void modificacion(@PathVariable String id, @RequestBody JSONObject body)
+	@RequestMapping(value = "/usuario/modificacion/{id}", method = RequestMethod.PUT)
+	public void modificacion(@RequestBody JSONObject body, @PathVariable String id)
 	{
+		System.out.println("ID = "+id);
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario u = udao.retireve(id);
 		
