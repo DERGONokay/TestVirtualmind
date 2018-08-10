@@ -10,6 +10,10 @@ import test.restful.cotizacion.CotizadorDolar;
 import test.restful.cotizacion.CotizadorPeso;
 import test.restful.cotizacion.CotizadorReal;
 
+/**
+ * Controlador para la cotizacion de monedas
+ * @author Damian Lisas
+ */
 @RestController
 public class CotizacionController 
 {
@@ -17,7 +21,7 @@ public class CotizacionController
 	
 	/**
 	 * Devuelve la cotizacion de la MONEDA en AR$
-	 * @param MONEDA 
+	 * @param MONEDA Divisa a cotizar
 	 * @return Cotizacion de la MONEDA en Pesos
 	 */
 	@RequestMapping(value="/{MONEDA}/quote", method=RequestMethod.GET)
@@ -37,11 +41,5 @@ public class CotizacionController
 		}
 		
 		return cotizador.cotizar();
-	}
-	
-	@RequestMapping(value="/test", method=RequestMethod.GET)
-	public String test()
-	{
-		return "TEST";
 	}
 }

@@ -1,10 +1,8 @@
 package test.restful.controller;
 
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,32 +12,60 @@ import org.springframework.web.bind.annotation.RestController;
 import test.restful.usuario.model.Usuario;
 import test.restful.usuario.persistencia.UsuarioDAO;
 
+/**
+ * Controlador para el manejo de los usuarios dentro de la base de datos
+ * @author Damian Lisas
+ */
 @RestController
 public class ABMController 
 {
-	@RequestMapping(value = "/usuario/alta", method = RequestMethod.POST)
-	public void alta(@RequestBody String body, HttpServletResponse response) throws ParseException
+	/**
+	 * Devuelve todos los usuarios en la base de datos
+	 * @return Una lista de usuarios
+	 */
+	@RequestMapping(value = "/usuario", method = RequestMethod.GET)
+	public List<Usuario> usuario()
 	{
-		System.out.println("Dando alta a usuario");
+		UsuarioDAO udao = new UsuarioDAO();
+		
+		return udao.retrieveAll();
+	}
+	/**
+	 * Crea un nuevo usuario y lo almacena en la base de datos
+	 * @param body Datos del usuario
+	 */
+	@RequestMapping(value = "/usuario/alta", method = RequestMethod.POST)
+	public void alta(@RequestBody JSONObject body)
+	{
 		Usuario u = new Usuario();
 		UsuarioDAO udao = new UsuarioDAO();
-		JSONObject jsonBody = (JSONObject) new JSONParser().parse(body);
 		
-		u.setNombre((String)jsonBody.get("nombre"));
-		u.setApellido((String)jsonBody.get("apellido"));
-		u.setEmail((String)jsonBody.get("email"));
-		u.setPassword((String)jsonBody.get("password"));
-			
+		u.setNombre((String)body.get("nombre"));
+		u.setApellido((String)body.get("apellido"));
+		u.setEmail((String)body.get("email"));
+		u.setPassword((String)body.get("password"));
+		
+		udao.create(u);		
 	}
+	/**
+	 * Elimina un usuario de la base de datos segun su id
+	 * @param id Id del usuario en la base de datos
+	 */
 	@RequestMapping(value = "/usuario/baja/{id}", method = RequestMethod.POST)
-	public void baja(@PathVariable Integer id)
+	public void baja(@PathVariable String id)
 	{
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario u = udao.retireve(id);
+		
 		udao.delete(u);
 	}
+	/**
+	 * Modifica al usuario segun su id
+	 * @param id Id del usuario en la base de datos
+	 * @param body Los nuevos datos del usuario
+	 */
 	@RequestMapping(value = "/usuario/modificaion/{id}", method = RequestMethod.POST)
-	public void modificacion(@PathVariable Integer id, @RequestBody JSONObject body)
+	public void modificacion(@PathVariable String id, @RequestBody JSONObject body)
 	{
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario u = udao.retireve(id);

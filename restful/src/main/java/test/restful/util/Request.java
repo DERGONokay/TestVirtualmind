@@ -10,8 +10,17 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+/**
+ * Clase para realizar peticiones
+ * @author Damian Lisas
+ */
 public class Request 
 {
+	/**
+	 * Realiza una GET Request a la URL especificada
+	 * @param URL A donde realizar la peticion
+	 * @return Respuesta de la peticion en String
+	 */
 	public static String GETRequest(String URL)
 	{
 		StringBuffer response = null;
