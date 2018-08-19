@@ -67,7 +67,6 @@ public class ABMController
 	@RequestMapping(value = "/usuario/modificacion/{id}", method = RequestMethod.PUT)
 	public void modificacion(@RequestBody JSONObject body, @PathVariable String id)
 	{
-		System.out.println("ID = "+id);
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario u = udao.retireve(id);
 		
